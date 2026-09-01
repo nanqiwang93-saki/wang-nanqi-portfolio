@@ -1,6 +1,7 @@
 import HashScroll from './hash-scroll';
 
 const pdfHref = 'downloads/%E7%8E%8B%E5%8D%97%E5%B4%8E_%E5%B7%A5%E4%B8%9A%E8%AE%BE%E8%AE%A1%E7%A1%95%E5%A3%AB%E7%94%B3%E8%AF%B7%E4%BD%9C%E5%93%81%E9%9B%86_2026.pdf';
+const pdfDownloadName = '王南崎_工业设计硕士申请作品集_2026.pdf';
 
 type ImageData = { base: string; widths: number[]; width: number; height: number; alt: string; caption?: string };
 type CuratedProject = {
@@ -24,7 +25,7 @@ function TransitionMark({ type }: { type: 'initiate' | 'detach' | 'settle' }) {
 }
 
 function Navigation() {
-  const links = <><a href="#home">HOME</a><a href="#preface">PREFACE</a><a href="#projects">PROJECTS</a><a href="#profile">PROFILE</a><a href={pdfHref} target="_blank" rel="noreferrer">DOWNLOAD</a></>;
+  const links = <><a href="#home">HOME</a><a href="#preface">PREFACE</a><a href="#projects">PROJECTS</a><a href="#profile">PROFILE</a><a href={pdfHref} download={pdfDownloadName}><span className="download-label-desktop">DOWNLOAD</span><span className="download-label-mobile">DOWNLOAD PDF · 8.6 MB</span></a></>;
   return <><nav className="desktop-nav" aria-label="主导航">{links}</nav><details className="mobile-menu"><summary>MENU</summary><nav aria-label="移动端主导航">{links}</nav></details></>;
 }
 
@@ -144,7 +145,7 @@ function CuratedProjectSection({ project }: { project: CuratedProject }) {
       <article className="project-module curated-final">
         <div className="module-label"><span>FINAL EXPERIENCE</span><span>IN USE</span></div>
         <PortfolioImage image={project.finalImage} className="final-experience-image" sizes="(max-width: 700px) 100vw, 72vw" />
-        <div className="final-experience-copy"><ul>{project.features.map((feature) => <li key={feature}>{feature}</li>)}</ul><p>{project.summary}</p><div className="final-actions"><a className="case-study-link" href={pdfHref} target="_blank" rel="noreferrer">VIEW FULL CASE STUDY IN PDF ↗</a><a href={project.next}>{project.nextLabel} ↓</a></div></div>
+        <div className="final-experience-copy"><ul>{project.features.map((feature) => <li key={feature}>{feature}</li>)}</ul><p>{project.summary}</p><div className="final-actions"><a className="case-study-link" href={pdfHref} download={pdfDownloadName}>DOWNLOAD FULL CASE STUDY PDF ↓</a><a href={project.next}>{project.nextLabel} ↓</a></div></div>
       </article>
     </div>
   </section>;
@@ -156,7 +157,7 @@ export default function Home() {
     <section className="hero section-shell" id="home" aria-labelledby="hero-title">
       <div className="hero-meta hero-name"><strong>王南崎</strong><span>WANG NANQI</span></div><div className="hero-meta hero-portfolio"><strong>工业设计硕士申请作品集</strong><span>INDUSTRIAL DESIGN GRADUATE APPLICATION PORTFOLIO</span></div><div className="hero-year">2026</div>
       <div className="hero-title-wrap"><h1 id="hero-title" className="hero-wordmark" aria-label="PORTFOLIO"><span aria-hidden="true">P</span><span className="hero-letter-o hero-letter-o-initiate" aria-hidden="true">O<span className="hero-letter-mark hero-letter-mark-initiate"><TransitionMark type="initiate" /></span></span><span aria-hidden="true">RTF</span><span className="hero-letter-o hero-letter-o-detach" aria-hidden="true">O<span className="hero-letter-mark hero-letter-mark-detach"><TransitionMark type="detach" /></span></span><span aria-hidden="true">LI</span><span className="hero-letter-o hero-letter-o-settle" aria-hidden="true">O<span className="hero-letter-mark hero-letter-mark-settle"><TransitionMark type="settle" /></span></span></h1></div>
-      <div className="hero-bottom"><div><p className="hero-theme">DESIGNING TANGIBLE INTERACTIONS<br />FOR EVERYDAY TRANSITIONS</p><p className="hero-theme-cn">为日常状态转换设计可触的交互</p></div><div className="hero-actions"><a className="button button-primary" href="#projects">VIEW PROJECTS <span aria-hidden="true">↘</span></a><a className="button button-secondary" href={pdfHref} download="王南崎_工业设计硕士申请作品集_2026.pdf">DOWNLOAD FULL PORTFOLIO <span aria-hidden="true">↓</span></a></div></div>
+      <div className="hero-bottom"><div><p className="hero-theme">DESIGNING TANGIBLE INTERACTIONS<br />FOR EVERYDAY TRANSITIONS</p><p className="hero-theme-cn">为日常状态转换设计可触的交互</p></div><div className="hero-download"><div className="hero-actions"><a className="button button-primary" href="#projects">VIEW PROJECTS <span aria-hidden="true">↘</span></a><a className="button button-secondary" href={pdfHref} download={pdfDownloadName}>DOWNLOAD PDF · 8.6 MB <span aria-hidden="true">↓</span></a></div><p className="mobile-download-note">手机端将直接下载；若微信内受限，请使用系统浏览器打开。</p></div></div>
     </section>
     <section className="preface section-shell" id="preface" aria-labelledby="preface-title"><div className="section-index"><span>P.01</span><span>PREFACE</span></div><div className="preface-heading"><h2 id="preface-title">为状态转换而设计</h2><p>DESIGNING FOR TRANSITIONS</p></div><div className="preface-copy"><p>状态之间，也是一段值得被设计的体验。日常生活里，真正困难的往往不是某个稳定状态，而是从停滞进入行动、从任务中暂时退出，或从高唤醒慢慢回到静息。</p><p>三个项目以实体形态、身体动作与感官反馈回应这些容易被忽略的过渡，使变化可感知、可调节，并避免增加额外负担。数字技术不占据注意力中心，而是在需要时介入，在不需要时退后。</p></div></section>
     <section className="project-hub section-shell" id="projects" aria-labelledby="projects-title"><div className="section-index"><span>P.02</span><span>CONTENTS</span></div><div className="hub-heading"><h2 id="projects-title">三个日常过渡</h2><p>THREE EVERYDAY TRANSITIONS</p></div><div className="transition-grid"><a className="transition-card initiate" href="#tidechron"><span className="transition-number">01</span><strong>INITIATE</strong><TransitionMark type="initiate" /><p>低行动状态 → 行动状态</p><h3>TideChron｜潮汐之刻</h3></a><a className="transition-card detach" href="#mindhaven"><span className="transition-number">02</span><strong>DETACH</strong><TransitionMark type="detach" /><p>任务占用 → 暂时退出</p><h3>MindHaven｜留白</h3></a><a className="transition-card settle" href="#sensoripple"><span className="transition-number">03</span><strong>SETTLE</strong><TransitionMark type="settle" /><p>高唤醒状态 → 静息状态</p><h3>SensoRipple｜息纹</h3></a></div></section>
@@ -164,7 +165,7 @@ export default function Home() {
     <section className="profile section-shell" id="profile" aria-labelledby="profile-title">
       <div className="profile-intro"><div className="section-index profile-index"><span>PROFILE</span></div><div className="profile-name"><p>王南崎</p><h2 id="profile-title">WANG NANQI</h2><span>INDUSTRIAL DESIGN</span></div><PortfolioImage image={{ base: 'images/profile/wang-nanqi-portrait', widths: [480,768,1080,1440,1500], width: 1500, height: 2100, alt: '王南崎个人证件照' }} sizes="(max-width: 700px) 72vw, 28vw" className="profile-photo" /><div className="profile-statement"><p>我关注注意、感官与情绪调节中的个体差异，并从神经多样性视角探索实体与具身交互如何支持心理福祉。我的设计将体验需求转译为可触摸的产品形态、身体动作与低负担感官反馈，使技术在需要时介入、在不需要时退后，并尊重用户自主性。</p></div></div>
       <div className="profile-details"><article><h3>研究兴趣 <span>RESEARCH INTERESTS</span></h3><ul><li>人机交互</li><li>实体与具身交互</li><li>心理福祉设计</li><li>面向神经多样性的包容性设计</li></ul><p className="english-list">HUMAN–COMPUTER INTERACTION<br />TANGIBLE & EMBODIED INTERACTION<br />DESIGN FOR MENTAL WELLBEING<br />INCLUSIVE DESIGN FOR NEURODIVERSITY</p></article><article><h3>教育 <span>EDUCATION</span></h3><p><strong>中国地质大学（武汉）</strong><br />机械与电子信息学院 · 工业设计系</p><dl className="academic-metrics"><div><dt>GPA</dt><dd>3.55 / 5.0</dd></div><div><dt>专业排名</dt><dd>3 / 23</dd></div></dl></article><article><h3>荣誉 <span>SELECTED HONORS</span></h3><ul className="honors"><li><b>2024</b><span>国家奖学金</span></li><li><b>2026</b><span>第14届未来设计师·全国高校数字艺术设计大赛省级赛（湖北赛区）二等奖（团队）</span></li><li><b>2026</b><span>湖北省大学生机械创新设计大赛暨第十二届全国大学生机械创新设计大赛湖北省三等奖（团队）</span></li></ul></article><article><h3>核心能力 <span>CAPABILITIES</span></h3><div className="capability-groups"><p><b>DESIGN &amp; PROTOTYPING</b>Rhino · KeyShot · Figma · Adobe Illustrator</p><p><b>PHYSICAL COMPUTING</b>Arduino · ESP32-S3 · MCU Prototyping</p></div></article></div>
-      <footer className="contact-footer"><div><p>CONTACT</p><a href="mailto:13527320227@163.com">13527320227@163.com</a></div><a className="button button-primary" href={pdfHref} download="王南崎_工业设计硕士申请作品集_2026.pdf">下载完整作品集 <span>DOWNLOAD PDF ↓</span></a><p>© 2026 WANG NANQI</p></footer>
+      <footer className="contact-footer"><div><p>CONTACT</p><a href="mailto:13527320227@163.com">13527320227@163.com</a></div><div className="footer-download"><a className="button button-primary" href={pdfHref} download={pdfDownloadName}>下载完整作品集 <span>PDF · 8.6 MB ↓</span></a><p className="mobile-download-note">若微信内无法下载，请使用系统浏览器打开。</p></div><p>© 2026 WANG NANQI</p></footer>
     </section>
   </main></>;
 }
